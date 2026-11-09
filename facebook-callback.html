@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<title>ACB Publisher</title>
+</head>
+<body>
+<p>Returning to ACB Publisher on this computer...</p>
+<script>
+// Facebook only redirects to https addresses. This page passes the sign-in reply on to the tool on this same computer and stores nothing.
+var incoming = new URLSearchParams(location.search), outgoing = new URLSearchParams();
+["code", "state", "error", "error_description"].forEach(function (key) {
+  if (incoming.get(key)) { outgoing.set(key, incoming.get(key)); }
+});
+location.replace("http://127.0.0.1:8765/oauth/callback/facebook?" + outgoing.toString());
+</script>
+</body>
+</html>
